@@ -1,0 +1,79 @@
+{
+  "name": "devexbot",
+  "description": "Send custom developer experience surveys using Slack.",
+  "version": "1.0.0",
+  "author": "Mikael Vesavuori",
+  "license": "MIT",
+  "keywords": [
+    "slack",
+    "devex",
+    "bot",
+    "developer-experience",
+    "surveys"
+  ],
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikaelvesavuori/devexbot"
+  },
+  "bugs": {
+    "url": "https://github.com/mikaelvesavuori/devexbot/issues"
+  },
+  "homepage": "https://github.com/mikaelvesavuori/devexbot",
+  "files": [
+    "/dist",
+    "!/dist/**/*.map",
+    "!/tests"
+  ],
+  "bin": {
+    "devexbot": "dist/index.js"
+  },
+  "scripts": {
+    "start": "npx ts-node src/test.ts",
+    "test": "npm run test:licenses && npm run test:types && npm run test:unit",
+    "test:types": "npx type-coverage --at-least 97 --strict --ignore-files \"tests/**/*.ts\" --ignore-files \"*.ts\" --ignore-files \"src/application/errors/*.ts\" --ignore-files \"testdata/*.ts\"",
+    "test:licenses": "npx license-compliance --direct --allow 'MIT;ISC;0BSD;BSD-2-Clause;BSD-3-Clause;Apache-2.0;Unlicense;CC0-1.0'",
+    "test:unit": "npx c8 -reporter=lcov ava",
+    "build": "npm run clean && npm run build:ncc",
+    "build:ncc": "npx ncc build src/index.ts --license licenses.txt",
+    "clean": "rm -rf dist && mkdir -p dist",
+    "package": "npm pack",
+    "prepublishOnly": "npm run build",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "mikrolog": "2"
+  },
+  "devDependencies": {
+    "@ava/typescript": "4",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "5",
+    "@typescript-eslint/parser": "5",
+    "@vercel/ncc": "0",
+    "ava": "5",
+    "c8": "8",
+    "eslint": "8",
+    "eslint-config-prettier": "8",
+    "eslint-plugin-prettier": "4",
+    "husky": "8",
+    "license-compliance": "latest",
+    "prettier": "2",
+    "ts-node": "latest",
+    "type-coverage": "2",
+    "typescript": "5"
+  },
+  "ava": {
+    "typescript": {
+      "rewritePaths": {
+        "src/": "dist/"
+      },
+      "compile": false
+    },
+    "files": [
+      "tests/**/*.ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}
