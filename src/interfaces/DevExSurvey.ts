@@ -158,7 +158,6 @@ export type OptInOutResponse = {
 
 /**
  * @description The shape of Slack's webhook payloads.
- * @todo
  */
 export type SlackWebhookPayload = {
   type: 'block_actions';

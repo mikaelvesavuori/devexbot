@@ -14,7 +14,7 @@ Features includes:
 - Comes with sane defaults
 - Requires only that you set up a bot app in Slack
 
-_You might also be interested in [this full solution](TODO), which is deployable on AWS and includes all components such as API management, functions, and storage, as well as support for Slack's slash commands for opting in/out users._
+_You might also be interested in [this full solution](https://github.com/mikaelvesavuori/slack-devex-survey), which is deployable on AWS and includes all components such as API management, functions, and storage, as well as support for Slack's slash commands for opting in/out users._
 
 ---
 
@@ -77,7 +77,6 @@ Install the dependencies with `npm install` or your equivalent command.
 
 - [Create a Slack app](https://api.slack.com/authentication/basics). Set it to whatever name you want.
 - In `OAuth & Permissions`, make sure that the following scopes are enabled: `chat:write`, `commands`, and `users:read`. **Note down the "Bot User OAuth Token"**.
-- --> `SLACK_AUTH_TOKEN` - The key to authorize your call to Slack (TODO)
 
 ### Example: Open a survey to a list of users
 
